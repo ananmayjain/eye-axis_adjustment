@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light sticky-top">
+    <a class="navbar-brand" href="#!" routerLink="/welcome">Eye Axis Adjustment</a>
+    <ul class="navbar-nav">
+        <li class="nav-item" [class.active]="menuService.activeIndex == 1">
+            <a class="nav-link" routerLink="/diagnostic">Diagnostic</a>
+        </li>
+        <li class="nav-item" [class.active]="menuService.activeIndex == 2">
+            <a class="nav-link" routerLink="/about">About</a>
+        </li>
+    </ul>
+</nav>

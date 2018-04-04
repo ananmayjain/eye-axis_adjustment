@@ -1,0 +1,9 @@
+*.DS_Store
+
+# Python Generated Files
+__pycache__
+
+# Angular Generated Files
+/static
+/node_modules/
+

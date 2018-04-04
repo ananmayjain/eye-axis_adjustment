@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row mt-3">
+        <!--
+            Top bar
+        -->
+        <div>
+            <a class="btn btn-dark text-white" routerLink="/welcome">Back</a>
+            <button class="btn btn-dark" (click)="toggleSettings()" id="setting-diagnostic-toggler">Settings</button>
+            <!--
+                The send button is disabled if:
+                - the browser does not give camera access.
+                - the client automatically send new updates.
+            -->
+            <button class="btn btn-dark" [class.disabled]="settingService.isAutomaticSending || !diagnosticService.isCameraAvailable"
+                    (click)="this.diagnosticService.sendFrame('canvas-element')">Send</button>
+        </div>
+
+    </div>
+
+    <!--Alert the user if the camera is not available-->
+
+    <div class="row mt-3" *ngIf="!diagnosticService.isCameraAvailable">
+        <a class="badge badge-danger text-white">Camera Not Available!</a>
+    </div>
+
+    <!--Content of Diagnostic Page-->
+
+    <div class="row mt-3 justify-content-center">
+
+        <!--Settings, shown when the user clicks Setting Button-->
+
+        <div class="col-3" *ngIf="isSettingActive">
+            <!--Diagnostic Settings-->
+            <app-settings></app-settings>
+        </div>
+
+        <!--Video Output-->
+
+        <div class="col-6">
+            <div class="text-center">
+                <video id="video-element" class="video-renderer"></video>
+                <canvas id="canvas-element" class="video-player" [width]="diagnosticService.videoWidth" [height]="diagnosticService.videoHeight"></canvas>
+            </div>
+        </div>
+
+        <div class="col-3" *ngIf="this.diagnosticService.responseImage">
+            <div class="text-center">
+                <img [src]="this.diagnosticService.responseImage">
+            </div>
+        </div>
+    </div>
+</div>
