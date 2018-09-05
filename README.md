@@ -1,4 +1,4 @@
-# eye-axis_adjustment
+# Eye Axis Adjustment
 We use OpenCV eye and circle detection to determine the Degree of Strabismus (crossed eyes) in individuals using simple phone cameras.
 
 A Web Api takes images on from the user, runs the vision code, and provides feedback based on the results.
